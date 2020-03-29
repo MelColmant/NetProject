@@ -108,5 +108,27 @@ namespace API_FT.Services.Mapper
                 RelationshipTypeCode = relationship.RelationshipTypeCode
             };
         }
+
+        public static FTDAL.ParentChild ToDAL(this API.ParentChild parentchild)
+        {
+            return new FTDAL.ParentChild
+            {
+                ParentChildId = parentchild.ParentChildId,
+                Person1Id = parentchild.Person1Id,
+                Person2Id = parentchild.Person2Id,
+                IsAdopted = parentchild.IsAdopted
+            };
+        }
+
+        public static API.ParentChild ToAPI(this FTDAL.ParentChild parentchild)
+        {
+            return new API.ParentChild
+            {
+                ParentChildId = parentchild.ParentChildId,
+                Person1Id = parentchild.Person1Id,
+                Person2Id = parentchild.Person2Id,
+                IsAdopted = parentchild.IsAdopted
+            };
+        }
     }
 }

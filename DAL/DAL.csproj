@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ParentChild.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Relationship.cs" />
     <Compile Include="Models\Tree.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Repositories\IRelationshipRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\ParentChildRepository.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
     <Compile Include="Repositories\RelationshipRepository.cs" />
     <Compile Include="Repositories\TreeRepository.cs" />
