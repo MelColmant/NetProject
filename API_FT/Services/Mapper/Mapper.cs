@@ -80,5 +80,33 @@ namespace API_FT.Services.Mapper
                 TreeId = person.TreeId
             };
         }
+
+        public static FTDAL.Relationship ToDAL(this API.Relationship relationship)
+        {
+            return new FTDAL.Relationship
+            {
+                RelationshipId = relationship.RelationshipId,
+                Person1Id = relationship.Person1Id,
+                Person2Id = relationship.Person2Id,
+                StartDate = relationship.StartDate,
+                EndDate = relationship.EndDate,
+                IsUnisex = relationship.IsUnisex,
+                RelationshipTypeCode = relationship.RelationshipTypeCode
+            };
+        }
+
+        public static API.Relationship ToAPI(this FTDAL.Relationship relationship)
+        {
+            return new API.Relationship
+            {
+                RelationshipId = relationship.RelationshipId,
+                Person1Id = relationship.Person1Id,
+                Person2Id = relationship.Person2Id,
+                StartDate = relationship.StartDate,
+                EndDate = relationship.EndDate,
+                IsUnisex = relationship.IsUnisex,
+                RelationshipTypeCode = relationship.RelationshipTypeCode
+            };
+        }
     }
 }
