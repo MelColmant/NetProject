@@ -61,6 +61,7 @@
     <Compile Include="Models\ParentChild.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Relationship.cs" />
+    <Compile Include="Models\Ressources.cs" />
     <Compile Include="Models\Tree.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Repositories\ParentChildRepository.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
     <Compile Include="Repositories\RelationshipRepository.cs" />
+    <Compile Include="Repositories\RessourcesRepository.cs" />
     <Compile Include="Repositories\TreeRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>

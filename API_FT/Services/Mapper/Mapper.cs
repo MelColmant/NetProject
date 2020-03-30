@@ -150,5 +150,27 @@ namespace API_FT.Services.Mapper
                 Person2Id = godfm.Person2Id
             };
         }
+
+        public static FTDAL.Ressources ToDAL(this API.Ressources ressources)
+        {
+            return new FTDAL.Ressources
+            {
+                RessourceId = ressources.RessourceId,
+                Format = ressources.Format,
+                Description = ressources.Description,
+                Link = ressources.Link
+            };
+        }
+
+        public static API.Ressources ToAPI(this FTDAL.Ressources ressources)
+        {
+            return new API.Ressources
+            {
+                RessourceId = ressources.RessourceId,
+                Format = ressources.Format,
+                Description = ressources.Description,
+                Link = ressources.Link
+            };
+        }
     }
 }

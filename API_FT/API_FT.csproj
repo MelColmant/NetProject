@@ -134,6 +134,7 @@
     <Compile Include="Controllers\ParentChildController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\RelationshipController.cs" />
+    <Compile Include="Controllers\RessourcesController.cs" />
     <Compile Include="Controllers\TreeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -143,6 +144,7 @@
     <Compile Include="Models\ParentChild.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Relationship.cs" />
+    <Compile Include="Models\Ressources.cs" />
     <Compile Include="Models\Tree.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,6 +153,7 @@
     <Compile Include="Services\ParentChildService.cs" />
     <Compile Include="Services\PersonService.cs" />
     <Compile Include="Services\RelationshipService.cs" />
+    <Compile Include="Services\RessourcesService.cs" />
     <Compile Include="Services\TreeService.cs" />
     <Compile Include="Services\UserService.cs" />
   </ItemGroup>
