@@ -172,5 +172,25 @@ namespace API_FT.Services.Mapper
                 Link = ressources.Link
             };
         }
+
+        public static FTDAL.Person_Ressource ToDAL(this API.Person_Ressource personressource)
+        {
+            return new FTDAL.Person_Ressource
+            {
+                Person_RessourceId = personressource.Person_RessourceId,
+                PersonId = personressource.PersonId,
+                RessourceId = personressource.RessourceId
+            };
+        }
+
+        public static API.Person_Ressource ToAPI(this FTDAL.Person_Ressource personressource)
+        {
+            return new API.Person_Ressource
+            {
+                Person_RessourceId = personressource.Person_RessourceId,
+                PersonId = personressource.PersonId,
+                RessourceId = personressource.RessourceId
+            };
+        }
     }
 }

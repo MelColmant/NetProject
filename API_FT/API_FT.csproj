@@ -133,6 +133,7 @@
     <Compile Include="Controllers\GodFMController.cs" />
     <Compile Include="Controllers\ParentChildController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\Person_RessourceController.cs" />
     <Compile Include="Controllers\RelationshipController.cs" />
     <Compile Include="Controllers\RessourcesController.cs" />
     <Compile Include="Controllers\TreeController.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Models\GodFM.cs" />
     <Compile Include="Models\ParentChild.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Person_Ressource.cs" />
     <Compile Include="Models\Relationship.cs" />
     <Compile Include="Models\Ressources.cs" />
     <Compile Include="Models\Tree.cs" />
@@ -152,6 +154,7 @@
     <Compile Include="Services\Mapper\Mapper.cs" />
     <Compile Include="Services\ParentChildService.cs" />
     <Compile Include="Services\PersonService.cs" />
+    <Compile Include="Services\Person_RessourceService.cs" />
     <Compile Include="Services\RelationshipService.cs" />
     <Compile Include="Services\RessourcesService.cs" />
     <Compile Include="Services\TreeService.cs" />

@@ -60,6 +60,7 @@
     <Compile Include="Models\GodFM.cs" />
     <Compile Include="Models\ParentChild.cs" />
     <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\Person_Ressource.cs" />
     <Compile Include="Models\Relationship.cs" />
     <Compile Include="Models\Ressources.cs" />
     <Compile Include="Models\Tree.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\ParentChildRepository.cs" />
     <Compile Include="Repositories\PersonRepository.cs" />
+    <Compile Include="Repositories\Person_RessourceRepository.cs" />
     <Compile Include="Repositories\RelationshipRepository.cs" />
     <Compile Include="Repositories\RessourcesRepository.cs" />
     <Compile Include="Repositories\TreeRepository.cs" />
