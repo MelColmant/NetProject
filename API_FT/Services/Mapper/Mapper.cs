@@ -130,5 +130,25 @@ namespace API_FT.Services.Mapper
                 IsAdopted = parentchild.IsAdopted
             };
         }
+
+        public static FTDAL.GodFM ToDAL(this API.GodFM godfm)
+        {
+            return new FTDAL.GodFM
+            {
+                GodFMId = godfm.GodFMId,
+                Person1Id = godfm.Person1Id,
+                Person2Id = godfm.Person2Id
+            };
+        }
+
+        public static API.GodFM ToAPI(this FTDAL.GodFM godfm)
+        {
+            return new API.GodFM
+            {
+                GodFMId = godfm.GodFMId,
+                Person1Id = godfm.Person1Id,
+                Person2Id = godfm.Person2Id
+            };
+        }
     }
 }
