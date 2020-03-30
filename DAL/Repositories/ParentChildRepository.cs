@@ -12,7 +12,7 @@ namespace DAL.Repositories
 {
     public class ParentChildRepository : IRepository<int, ParentChild>
     {
-        private string _constring = ConfigurationManager.ConnectionStrings["ConnectionDB"].ConnectionString;
+        private string _constring = ConfigurationManager.ConnectionStrings["Connection_DB"].ConnectionString;
         public void Add(ParentChild entity)
         {
             using (SqlConnection connection = new SqlConnection(_constring))
@@ -113,7 +113,7 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@ParentChildId", id);
                     command.Parameters.AddWithValue("@Person1Id", entity.Person1Id);
                     command.Parameters.AddWithValue("@Person2Id", entity.Person2Id);
-                    command.Parameters.AddWithValue("@IsAdpoted", entity.IsAdopted);
+                    command.Parameters.AddWithValue("@IsAdopted", entity.IsAdopted);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }
