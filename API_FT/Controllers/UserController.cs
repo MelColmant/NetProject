@@ -27,7 +27,11 @@ namespace API_FT.Controllers
             _service.RemoveUser(id);
         }
 
-
-
+        [AcceptVerbs("POST")]
+        [Route("User/check")]
+        public int CheckUser(User user)
+        {
+            return _service.CheckUser(user.UserName, user.Password);
+        }
     }
 }

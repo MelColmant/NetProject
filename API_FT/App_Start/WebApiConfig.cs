@@ -14,7 +14,7 @@ namespace API_FT
             // Web API configuration and services
             var cors = new EnableCorsAttribute(
                 "*", "*", "*");
-            config.EnableCors();
+            config.EnableCors(cors);
 
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new MediaTypeHeaderValue("text/html"));
             // Web API routes

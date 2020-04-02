@@ -10,8 +10,6 @@ namespace DAL.Repositories
     {
         void AddUser(T entity);
         void RemoveUser(TKey id);
-
         TKey CheckUser(string username, string password);
-
     }
 }

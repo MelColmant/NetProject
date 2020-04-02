@@ -55,13 +55,11 @@ namespace DAL.Repositories
                     command.CommandText = "SP_CheckUser";
                     command.Parameters.AddWithValue("@userName", username);
                     command.Parameters.AddWithValue("@password", password);
+
                     command.Parameters.AddWithValue("userId", DbType.Int32).Direction = ParameterDirection.Output;
                     connection.Open();
-                    if ((bool)command.ExecuteScalar())
-                    {
-                        return (int)command.Parameters["userId"].Value;
-                    }
-                    else return 0;
+                    command.ExecuteNonQuery();
+                    return (int)command.Parameters["userId"].Value;
                 }
             }
         }
