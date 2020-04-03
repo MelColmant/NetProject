@@ -20,9 +20,9 @@ namespace API_FT.Services
         {
             _repo.RemoveUser(id);
         }
-        public int CheckUser(string username, string password)
+        public API.User CheckUser(string username, string password)
         {
-            return _repo.CheckUser(username, password);
+            return _repo.CheckUser(username, password).ToAPI();
         }
     }
 }

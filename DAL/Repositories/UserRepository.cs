@@ -45,21 +45,41 @@ namespace DAL.Repositories
             }
         }
 
-        public int CheckUser(string username, string password)
+        public User CheckUser(string username, string password)
         {
             using (SqlConnection connection = new SqlConnection(_constring))
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
                     command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "SP_CheckUser";
+                    command.CommandText = "SP_CheckUser2";
                     command.Parameters.AddWithValue("@userName", username);
                     command.Parameters.AddWithValue("@password", password);
-
-                    command.Parameters.AddWithValue("userId", DbType.Int32).Direction = ParameterDirection.Output;
                     connection.Open();
-                    command.ExecuteNonQuery();
-                    return (int)command.Parameters["userId"].Value;
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new User()
+                            {
+                                UserId = (int)reader["UserId"],
+                                UserName = (string)reader["UserName"],
+                                Password = "***********",
+                                IsAdmin = (bool)reader["IsAdmin"]
+                            };
+                        }
+                        else
+                        {
+                            return new User()
+                            {
+                                UserId = 0,
+                                UserName = "invalid",
+                                Password = "***********",
+                                IsAdmin = false
+                            };
+                        }
+                    }
+
                 }
             }
         }

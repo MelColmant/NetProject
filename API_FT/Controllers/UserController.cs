@@ -29,7 +29,7 @@ namespace API_FT.Controllers
 
         [AcceptVerbs("POST")]
         [Route("User/check")]
-        public int CheckUser(User user)
+        public User CheckUser(User user)
         {
             return _service.CheckUser(user.UserName, user.Password);
         }
