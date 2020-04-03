@@ -12,9 +12,9 @@ namespace API_FT.Services
     public class UserService : IUserRepository<int, API.User>
     {
         private IUserRepository<int, FTDAL.User> _repo = new UserRepository();
-        public void AddUser(API.User entity)
+        public bool AddUser(API.User entity)
         {
-            _repo.AddUser(entity.ToDAL());
+            return _repo.AddUser(entity.ToDAL());
         }
         public void RemoveUser(int id)
         {

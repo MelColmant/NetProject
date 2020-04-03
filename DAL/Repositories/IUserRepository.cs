@@ -8,7 +8,7 @@ namespace DAL.Repositories
 {
     public interface IUserRepository<TKey, T> where T : class
     {
-        void AddUser(T entity);
+        bool AddUser(T entity);
         void RemoveUser(TKey id);
         T CheckUser(string username, string password);
     }

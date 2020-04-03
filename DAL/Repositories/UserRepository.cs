@@ -13,7 +13,7 @@ namespace DAL.Repositories
     public class UserRepository : IUserRepository<int, User>
     {
         private string _constring = ConfigurationManager.ConnectionStrings["Connection_DB"].ConnectionString;
-        public void AddUser(User entity)
+        public bool AddUser(User entity)
         {
             using (SqlConnection connection = new SqlConnection(_constring))
             {
@@ -25,7 +25,13 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@Password", entity.Password);
                     command.Parameters.AddWithValue("@IsAdmin", entity.IsAdmin);
                     connection.Open();
-                    entity.UserId = (int)command.ExecuteScalar();
+                    object UserId = command.ExecuteScalar();
+                    if (UserId != null)
+                    {
+                        entity.UserId = (int)UserId;
+                        return true;
+                    }
+                    else return false;
                 }
             }
         }

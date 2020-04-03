@@ -15,9 +15,9 @@ namespace API_FT.Controllers
 
         [AcceptVerbs("POST")]
         [Route("User")]
-        public void Register(User user)
+        public bool Register(User user)
         {
-            _service.AddUser(user);
+           return _service.AddUser(user);
         }
 
         [AcceptVerbs("DELETE")]
