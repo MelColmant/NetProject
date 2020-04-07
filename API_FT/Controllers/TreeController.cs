@@ -20,6 +20,13 @@ namespace API_FT.Controllers
             _service.Add(tree);
         }
 
+        [AcceptVerbs("POST")]
+        [Route("TreeWithId")]
+        public int RegisterWithId(Tree tree)
+        {
+           return _service.AddTreeWithId(tree);
+        }
+
         [AcceptVerbs("DELETE")]
         [Route("Tree/{id}")]
         public void Remove(int id)

@@ -69,6 +69,7 @@
     <Compile Include="Repositories\GodFMRepository.cs" />
     <Compile Include="Repositories\IPersonRepository.cs" />
     <Compile Include="Repositories\IRelationshipRepository.cs" />
+    <Compile Include="Repositories\ITreeRepository.cs" />
     <Compile Include="Repositories\IUserRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\ParentChildRepository.cs" />

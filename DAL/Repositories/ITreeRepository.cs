@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public interface IRelationshipRepository<TKey, T> : IRepository<TKey, T> where T : class
+    public interface ITreeRepository<TKey, T> : IRepository<TKey, T> where T : class
     {
-        IEnumerable<T> GetRelationships(TKey id);
-
+        TKey AddTreeWithId(T entity);
     }
 }

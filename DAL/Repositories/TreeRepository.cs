@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class TreeRepository : IRepository<int, Tree>
+    public class TreeRepository : ITreeRepository<int, Tree>
     {
         private string _constring = ConfigurationManager.ConnectionStrings["Connection_DB"].ConnectionString;
         public void Add(Tree entity)
@@ -34,6 +34,33 @@ namespace DAL.Repositories
                         Debug.WriteLine("Only an admin can build a tree!");
                     }
                     
+                }
+            }
+        }
+
+        public int AddTreeWithId(Tree entity)
+        {
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_AddTree";
+                    command.Parameters.AddWithValue("@TreeName", entity.TreeName);
+                    command.Parameters.AddWithValue("@Description", entity.Description);
+                    command.Parameters.AddWithValue("@UserId", entity.UserId);
+                    connection.Open();
+                    try
+                    {
+                        entity.TreeId = (int)command.ExecuteScalar();
+                    }
+                    catch (NullReferenceException ex)
+                    {
+                        Debug.WriteLine("Only an admin can build a tree!");
+                    }
+
+                    return entity.TreeId;
+
                 }
             }
         }

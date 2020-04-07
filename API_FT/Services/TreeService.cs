@@ -10,12 +10,17 @@ using FTDAL = DAL.Models;
 
 namespace API_FT.Services
 {
-    public class TreeService : IRepository<int, API.Tree>
+    public class TreeService : ITreeRepository<int, API.Tree>
     {
-        private IRepository<int, FTDAL.Tree> _repo = new TreeRepository();
+        private ITreeRepository<int, FTDAL.Tree> _repo = new TreeRepository();
         public void Add(Tree entity)
         {
             _repo.Add(entity.ToDAL());
+        }
+
+        public int AddTreeWithId(Tree entity)
+        {
+            return _repo.AddTreeWithId(entity.ToDAL());
         }
 
         public void Delete(int id)
