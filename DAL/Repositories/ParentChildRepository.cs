@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class ParentChildRepository : IRepository<int, ParentChild>
+    public class ParentChildRepository : IParentChildRepository<int, ParentChild>
     {
         private string _constring = ConfigurationManager.ConnectionStrings["Connection_DB"].ConnectionString;
         public void Add(ParentChild entity)
@@ -24,6 +24,7 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@Person1Id", entity.Person1Id);
                     command.Parameters.AddWithValue("@Person2Id", entity.Person2Id);
                     command.Parameters.AddWithValue("@IsAdopted", entity.IsAdopted);
+                    command.Parameters.AddWithValue("@TreeId", entity.TreeId);
                     connection.Open();
                     entity.ParentChildId = (int)command.ExecuteScalar();
                 }
@@ -63,7 +64,8 @@ namespace DAL.Repositories
                                 ParentChildId = (int)reader["ParentChildId"],
                                 Person1Id = (int)reader["Person1Id"],
                                 Person2Id = (int)reader["Person2Id"],
-                                IsAdopted = (bool)reader["IsAdopted"]
+                                IsAdopted = (bool)reader["IsAdopted"],
+                                TreeId = (int)reader["TreeId"]
                             };
                         }
                     }
@@ -90,12 +92,41 @@ namespace DAL.Repositories
                                 ParentChildId = (int)reader["ParentChildId"],
                                 Person1Id = (int)reader["Person1Id"],
                                 Person2Id = (int)reader["Person2Id"],
-                                IsAdopted = (bool)reader["IsAdopted"]
+                                IsAdopted = (bool)reader["IsAdopted"],
+                                TreeId = (int)reader["TreeId"]
                             };
                         }
                         else
                         {
                             return null;
+                        }
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<ParentChild> GetParentChildFromTree(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_ParentChildGetFromTree";
+                    command.Parameters.AddWithValue("@TreeId", id);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            yield return new ParentChild()
+                            {
+                                ParentChildId = (int)reader["ParentChildId"],
+                                Person1Id = (int)reader["Person1Id"],
+                                Person2Id = (int)reader["Person2Id"],
+                                IsAdopted = (bool)reader["IsAdopted"],
+                                TreeId = (int)reader["TreeId"]
+                            };
                         }
                     }
                 }
@@ -114,6 +145,7 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@Person1Id", entity.Person1Id);
                     command.Parameters.AddWithValue("@Person2Id", entity.Person2Id);
                     command.Parameters.AddWithValue("@IsAdopted", entity.IsAdopted);
+                    command.Parameters.AddWithValue("@TreeId", entity.TreeId);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

@@ -10,5 +10,7 @@ namespace DAL.Repositories
     {
         IEnumerable<T> GetRelationships(TKey id);
 
+        IEnumerable<T> GetRelationshipsFromTree(TKey id);
+
     }
 }

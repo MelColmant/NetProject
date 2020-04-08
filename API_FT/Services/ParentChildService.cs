@@ -10,9 +10,9 @@ using FTDAL = DAL.Models;
 
 namespace API_FT.Services
 {
-    public class ParentChildService : IRepository<int, API.ParentChild>
+    public class ParentChildService : IParentChildRepository<int, API.ParentChild>
     {
-        private IRepository<int, FTDAL.ParentChild> _repo = new ParentChildRepository();
+        private IParentChildRepository<int, FTDAL.ParentChild> _repo = new ParentChildRepository();
         public void Add(ParentChild entity)
         {
             _repo.Add(entity.ToDAL());
@@ -31,6 +31,11 @@ namespace API_FT.Services
         public ParentChild Get(int id)
         {
             return _repo.Get(id).ToAPI();
+        }
+
+        public IEnumerable<ParentChild> GetParentChildFromTree(int id)
+        {
+            return _repo.GetParentChildFromTree(id).Select(e => e.ToAPI());
         }
 
         public void Update(int id, ParentChild entity)

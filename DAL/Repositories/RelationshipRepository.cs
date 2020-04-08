@@ -27,6 +27,7 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@EndDate", entity.EndDate);
                     command.Parameters.AddWithValue("@IsUnisex", entity.IsUnisex);
                     command.Parameters.AddWithValue("@RelationshipTypeCode", entity.RelationshipTypeCode);
+                    command.Parameters.AddWithValue("@TreeId", entity.TreeId);
                     connection.Open();
                     entity.RelationshipId = (int)command.ExecuteScalar();
                 }
@@ -75,6 +76,7 @@ namespace DAL.Repositories
                             else r.EndDate = null;
                             r.IsUnisex= (bool)reader["IsUnisex"];
                             r.RelationshipTypeCode = (string)reader["RelationshipTypeCode"];
+                            r.TreeId = (int)reader["TreeId"];
                             relationshipList.Add(r);
 
                         }
@@ -111,6 +113,7 @@ namespace DAL.Repositories
                             else r.EndDate = null;
                             r.IsUnisex = (bool)reader["IsUnisex"];
                             r.RelationshipTypeCode = (string)reader["RelationshipTypeCode"];
+                            r.TreeId = (int)reader["TreeId"];
                             return r;
 
                         }
@@ -152,6 +155,45 @@ namespace DAL.Repositories
                             else r.EndDate = null;
                             r.IsUnisex = (bool)reader["IsUnisex"];
                             r.RelationshipTypeCode = (string)reader["RelationshipTypeCode"];
+                            r.TreeId = (int)reader["TreeId"];
+                            relationshipList.Add(r);
+                        }
+                    }
+
+                }
+            }
+            return relationshipList;
+        }
+
+        public IEnumerable<Relationship> GetRelationshipsFromTree(int id)
+        {
+            List<Relationship> relationshipList = new List<Relationship>();
+
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_GetRelationshipsFromTree";
+                    command.Parameters.AddWithValue("@TreeId", id);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Relationship r = new Relationship();
+                            r.RelationshipId = (int)reader["RelationshipId"];
+                            r.Person1Id = (int)reader["Person1Id"];
+                            r.Person2Id = (int)reader["Person2Id"];
+                            r.StartDate = (DateTime)reader["StartDate"];
+                            if (!DBNull.Value.Equals(reader["EndDate"]))
+                            {
+                                r.EndDate = (DateTime)reader["EndDate"];
+                            }
+                            else r.EndDate = null;
+                            r.IsUnisex = (bool)reader["IsUnisex"];
+                            r.RelationshipTypeCode = (string)reader["RelationshipTypeCode"];
+                            r.TreeId = (int)reader["TreeId"];
                             relationshipList.Add(r);
                         }
                     }
@@ -176,6 +218,7 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@EndDate", entity.EndDate);
                     command.Parameters.AddWithValue("@IsUnisex", entity.IsUnisex);
                     command.Parameters.AddWithValue("@RelationshipTypeCode", entity.RelationshipTypeCode);
+                    command.Parameters.AddWithValue("@TreeId", entity.TreeId);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

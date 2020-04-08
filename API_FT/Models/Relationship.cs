@@ -14,5 +14,6 @@ namespace API_FT.Models
         public DateTime? EndDate { get; set; }
         public bool IsUnisex { get; set; }
         public string RelationshipTypeCode { get; set; }
+        public int TreeId { get; set; }
     }
 }

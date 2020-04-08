@@ -35,6 +35,13 @@ namespace API_FT.Controllers
         }
 
         [AcceptVerbs("GET")]
+        [Route("ParentChild/FromTree/{id}")]
+        public IEnumerable<ParentChild> RetrieveFromTree(int id)
+        {
+            return _service.GetParentChildFromTree(id);
+        }
+
+        [AcceptVerbs("GET")]
         [Route("ParentChild/{id}")]
         public ParentChild Retrieve(int id)
         {

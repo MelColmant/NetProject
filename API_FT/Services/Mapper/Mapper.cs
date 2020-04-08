@@ -91,7 +91,8 @@ namespace API_FT.Services.Mapper
                 StartDate = relationship.StartDate,
                 EndDate = relationship.EndDate,
                 IsUnisex = relationship.IsUnisex,
-                RelationshipTypeCode = relationship.RelationshipTypeCode
+                RelationshipTypeCode = relationship.RelationshipTypeCode,
+                TreeId = relationship.TreeId
             };
         }
 
@@ -105,7 +106,8 @@ namespace API_FT.Services.Mapper
                 StartDate = relationship.StartDate,
                 EndDate = relationship.EndDate,
                 IsUnisex = relationship.IsUnisex,
-                RelationshipTypeCode = relationship.RelationshipTypeCode
+                RelationshipTypeCode = relationship.RelationshipTypeCode,
+                TreeId = relationship.TreeId
             };
         }
 
@@ -116,7 +118,8 @@ namespace API_FT.Services.Mapper
                 ParentChildId = parentchild.ParentChildId,
                 Person1Id = parentchild.Person1Id,
                 Person2Id = parentchild.Person2Id,
-                IsAdopted = parentchild.IsAdopted
+                IsAdopted = parentchild.IsAdopted,
+                TreeId = parentchild.TreeId
             };
         }
 
@@ -127,7 +130,8 @@ namespace API_FT.Services.Mapper
                 ParentChildId = parentchild.ParentChildId,
                 Person1Id = parentchild.Person1Id,
                 Person2Id = parentchild.Person2Id,
-                IsAdopted = parentchild.IsAdopted
+                IsAdopted = parentchild.IsAdopted,
+                TreeId = parentchild.TreeId
             };
         }
 

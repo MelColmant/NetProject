@@ -55,5 +55,12 @@ namespace API_FT.Controllers
         {
             return _service.GetRelationships(id);
         }
+
+        [AcceptVerbs("GET")]
+        [Route("Relationship/FromTree/{id}")]
+        public IEnumerable<Relationship> RetrieveRelationshipsFromTree(int id)
+        {
+            return _service.GetRelationshipsFromTree(id);
+        }
     }
 }

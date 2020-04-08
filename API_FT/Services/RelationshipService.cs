@@ -38,6 +38,11 @@ namespace API_FT.Services
             return _repo.GetRelationships(id).Select(e => e.ToAPI());
         }
 
+        public IEnumerable<Relationship> GetRelationshipsFromTree(int id)
+        {
+            return _repo.GetRelationshipsFromTree(id).Select(e => e.ToAPI());
+        }
+
         public void Update(int id, Relationship entity)
         {
             _repo.Update(id, entity.ToDAL());
