@@ -27,6 +27,7 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@BirthDate", entity.BirthDate);
                     command.Parameters.AddWithValue("@DeathDate", entity.DeathDate);
                     command.Parameters.AddWithValue("@TreeId", entity.TreeId);
+                    command.Parameters.AddWithValue("@Generation", entity.Generation);
                     connection.Open();
                     entity.PersonId = (int)command.ExecuteScalar();
                 }
@@ -75,6 +76,7 @@ namespace DAL.Repositories
                             }
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
+                            p.Generation = (int)reader["Generation"];
                             personList.Add(p);
 
                         }
@@ -113,6 +115,7 @@ namespace DAL.Repositories
                             }
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
+                            p.Generation = (int)reader["Generation"];
                             return p;
 
                         }
@@ -152,6 +155,7 @@ namespace DAL.Repositories
                             }
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
+                            p.Generation = (int)reader["Generation"];
                             personList.Add(p);
                         }
                     
@@ -188,9 +192,48 @@ namespace DAL.Repositories
                             }
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
+                            p.Generation = (int)reader["Generation"];
                             personList.Add(p);
                         }
                         
+                    }
+                }
+            }
+            return personList;
+        }
+
+        public IEnumerable<Person> GetChildrenRel(int id1, int id2)
+        {
+            List<Person> personList = new List<Person>();
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_GetChildrenRel";
+                    command.Parameters.AddWithValue("@Person1Id", id1);
+                    command.Parameters.AddWithValue("@Person2Id", id2);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Person p = new Person();
+                            p.PersonId = (int)reader["PersonId"];
+                            p.FirstName = (string)reader["FirstName"];
+                            p.LastName = (string)reader["LastName"];
+                            p.Gender = (string)reader["Gender"];
+                            p.BirthDate = (DateTime)reader["BirthDate"];
+                            if (!DBNull.Value.Equals(reader["DeathDate"]))
+                            {
+                                p.DeathDate = (DateTime)reader["DeathDate"];
+                            }
+                            else p.DeathDate = null;
+                            p.TreeId = (int)reader["TreeId"];
+                            p.Generation = (int)reader["Generation"];
+                            personList.Add(p);
+                        }
+
                     }
                 }
             }
@@ -224,6 +267,7 @@ namespace DAL.Repositories
                             }
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
+                            p.Generation = (int)reader["Generation"];
                             personList.Add(p);
                         }
                       
@@ -260,6 +304,7 @@ namespace DAL.Repositories
                             }
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
+                            p.Generation = (int)reader["Generation"];
                             personList.Add(p);
                         }
                       
@@ -284,6 +329,7 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@BirthDate", entity.BirthDate);
                     command.Parameters.AddWithValue("@DeathDate", entity.DeathDate);
                     command.Parameters.AddWithValue("@TreeId", entity.TreeId);
+                    command.Parameters.AddWithValue("@Generation", entity.Generation);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

@@ -12,5 +12,6 @@ namespace DAL.Repositories
         IEnumerable<T> GetParents(TKey id);
         IEnumerable<T> GetSiblings(TKey id);
         IEnumerable<T> GetAllFromTree(TKey id);
+        IEnumerable<T> GetChildrenRel(TKey id1, TKey id2);
     }
 }

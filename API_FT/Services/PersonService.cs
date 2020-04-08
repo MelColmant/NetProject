@@ -44,6 +44,11 @@ namespace API_FT.Services
             return _repo.GetChildren(id).Select(e => e.ToAPI());
         }
 
+        public IEnumerable<Person> GetChildrenRel(int id1, int id2)
+        {
+            return _repo.GetChildrenRel(id1, id2).Select(e => e.ToAPI());
+        }
+
         public IEnumerable<Person> GetParents(int id)
         {
             return _repo.GetParents(id).Select(e => e.ToAPI());

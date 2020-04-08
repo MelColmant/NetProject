@@ -63,6 +63,13 @@ namespace API_FT.Controllers
         }
 
         [AcceptVerbs("GET")]
+        [Route("Person/Children/{id1}/{id2}")]
+        public IEnumerable<Person> RetrieveChildrenRel(int id1, int id2)
+        {
+            return _service.GetChildrenRel(id1, id2);
+        }
+
+        [AcceptVerbs("GET")]
         [Route("Person/Parents/{id}")]
         public IEnumerable<Person> RetrieveParents(int id)
         {

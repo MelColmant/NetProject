@@ -63,7 +63,8 @@ namespace API_FT.Services.Mapper
                 Gender = person.Gender,
                 BirthDate = person.BirthDate,
                 DeathDate = person.DeathDate,
-                TreeId = person.TreeId
+                TreeId = person.TreeId,
+                Generation = person.Generation
             };
         }
 
@@ -77,7 +78,8 @@ namespace API_FT.Services.Mapper
                 Gender = person.Gender,
                 BirthDate = person.BirthDate,
                 DeathDate = person.DeathDate,
-                TreeId = person.TreeId
+                TreeId = person.TreeId,
+                Generation = person.Generation
             };
         }
 

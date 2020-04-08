@@ -15,5 +15,6 @@ namespace DAL.Models
         public DateTime BirthDate { get; set; }
         public DateTime? DeathDate { get; set; }
         public int TreeId { get; set; }
+        public int Generation { get; set; }
     }
 }
