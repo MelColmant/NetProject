@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API_FT", "API_FT\API_FT.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToolBox.JWT", "ToolBox.JWT\ToolBox.JWT.csproj", "{C9833B33-06C5-4FB1-A82D-AB81F71932CC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC_ConsumeAPI", "MVC_ConsumeAPI\MVC_ConsumeAPI.csproj", "{C5272390-6BDB-43CE-9AA9-E677D177C244}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C9833B33-06C5-4FB1-A82D-AB81F71932CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9833B33-06C5-4FB1-A82D-AB81F71932CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9833B33-06C5-4FB1-A82D-AB81F71932CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5272390-6BDB-43CE-9AA9-E677D177C244}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5272390-6BDB-43CE-9AA9-E677D177C244}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5272390-6BDB-43CE-9AA9-E677D177C244}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5272390-6BDB-43CE-9AA9-E677D177C244}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

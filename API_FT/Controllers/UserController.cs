@@ -33,5 +33,12 @@ namespace API_FT.Controllers
         {
             return _service.CheckUser(user.UserName, user.Password);
         }
+
+        [AcceptVerbs("GET")]
+        [Route("User")]
+        public IEnumerable<User> RetrieveAll()
+        {
+            return _service.Get();
+        }
     }
 }

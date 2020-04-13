@@ -1,4 +1,5 @@
-﻿using API_FT.Services.Mapper;
+﻿using API_FT.Models;
+using API_FT.Services.Mapper;
 using DAL.Repositories;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ namespace API_FT.Services
         public API.User CheckUser(string username, string password)
         {
             return _repo.CheckUser(username, password).ToAPI();
+        }
+
+        public IEnumerable<User> Get()
+        {
+            return _repo.Get().Select(e => e.ToAPI());
         }
     }
 }

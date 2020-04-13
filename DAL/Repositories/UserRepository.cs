@@ -89,5 +89,34 @@ namespace DAL.Repositories
                 }
             }
         }
+
+        public IEnumerable<User> Get()
+        {
+            List<User> userList = new List<User>();
+
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_UserGetAll";
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            User u = new User();
+                            u.UserId = (int)reader["UserId"];
+                            u.UserName = (string)reader["UserName"];
+                            u.Password = "***********";
+                            u.IsAdmin = (bool)reader["IsAdmin"];
+                            userList.Add(u);
+                        }
+                    }
+                }
+
+            }
+            return userList;
+        }
     }
 }
