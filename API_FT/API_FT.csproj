@@ -130,18 +130,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Authorization\ApiAuthorization.cs" />
     <Compile Include="Controllers\GodFMController.cs" />
     <Compile Include="Controllers\ParentChildController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Controllers\Person_RessourceController.cs" />
     <Compile Include="Controllers\RelationshipController.cs" />
     <Compile Include="Controllers\RessourcesController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
     <Compile Include="Controllers\TreeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\GodFM.cs" />
+    <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ParentChild.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Person_Ressource.cs" />
@@ -181,6 +184,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{7fd32aee-3c80-4e30-baee-6c59a45a53fd}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolBox.JWT\ToolBox.JWT.csproj">
+      <Project>{C9833B33-06C5-4FB1-A82D-AB81F71932CC}</Project>
+      <Name>ToolBox.JWT</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

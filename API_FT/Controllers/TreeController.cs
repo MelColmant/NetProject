@@ -1,4 +1,5 @@
-﻿using API_FT.Models;
+﻿using API_FT.Authorization;
+using API_FT.Models;
 using API_FT.Services;
 using System;
 using System.Collections.Generic;
@@ -18,13 +19,6 @@ namespace API_FT.Controllers
         public void Register(Tree tree)
         {
             _service.Add(tree);
-        }
-
-        [AcceptVerbs("POST")]
-        [Route("TreeWithId")]
-        public int RegisterWithId(Tree tree)
-        {
-           return _service.AddTreeWithId(tree);
         }
 
         [AcceptVerbs("DELETE")]
@@ -53,6 +47,14 @@ namespace API_FT.Controllers
         public void Update(int id, Tree tree)
         {
             _service.Update(id, tree);
+        }
+
+        [AcceptVerbs("POST")]
+        [Route("TreeWithId")]
+        [ApiAuthorization]
+        public int RegisterWithId(Tree tree)
+        {
+            return _service.AddTreeWithId(tree);
         }
 
 
