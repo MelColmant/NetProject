@@ -20,6 +20,13 @@ namespace API_FT.Controllers
             _service.Add(person);
         }
 
+        [AcceptVerbs("POST")]
+        [Route("PersonWithId")]
+        public int RegisterWithId(Person person)
+        {
+           return _service.AddWithId(person);
+        }
+
         [AcceptVerbs("DELETE")]
         [Route("Person/{id}")]
         public void Remove(int id)

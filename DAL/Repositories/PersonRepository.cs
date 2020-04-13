@@ -34,6 +34,28 @@ namespace DAL.Repositories
             }
         }
 
+        public int AddWithId(Person entity)
+        {
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_AddPerson";
+                    command.Parameters.AddWithValue("@FirstName", entity.FirstName);
+                    command.Parameters.AddWithValue("@LastName", entity.LastName);
+                    command.Parameters.AddWithValue("@Gender", entity.Gender);
+                    command.Parameters.AddWithValue("@BirthDate", entity.BirthDate);
+                    command.Parameters.AddWithValue("@DeathDate", entity.DeathDate);
+                    command.Parameters.AddWithValue("@TreeId", entity.TreeId);
+                    command.Parameters.AddWithValue("@Generation", entity.Generation);
+                    connection.Open();
+                    entity.PersonId = (int)command.ExecuteScalar();
+                    return entity.PersonId;
+                }
+            }
+        }
+
         public void Delete(int id)
         {
             using (SqlConnection connection = new SqlConnection(_constring))

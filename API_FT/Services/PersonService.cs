@@ -19,6 +19,11 @@ namespace API_FT.Services
             _repo.Add(entity.ToDAL());
         }
 
+        public int AddWithId(Person entity)
+        {
+            return _repo.AddWithId(entity.ToDAL());
+        }
+
         public void Delete(int id)
         {
             _repo.Delete(id);
