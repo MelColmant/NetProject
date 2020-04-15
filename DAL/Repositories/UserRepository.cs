@@ -118,5 +118,53 @@ namespace DAL.Repositories
             }
             return userList;
         }
+
+        public User Get(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_UserGetOne";
+                    command.Parameters.AddWithValue("@UserId", id);
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            User u = new User();
+                            u.UserId = (int)reader["UserId"];
+                            u.UserName = (string)reader["UserName"];
+                            u.Password = "***********";
+                            u.IsAdmin = (bool)reader["IsAdmin"];
+                            return u;
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void Update(int id, User entity)
+        {
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_UpdateUser";
+                    command.Parameters.AddWithValue("@UserId", id);
+                    command.Parameters.AddWithValue("@UserName", entity.UserName);
+                    command.Parameters.AddWithValue("@Password", entity.Password);
+                    command.Parameters.AddWithValue("@IsAdmin", entity.IsAdmin);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

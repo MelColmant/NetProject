@@ -40,5 +40,19 @@ namespace API_FT.Controllers
         {
             return _service.Get();
         }
+
+        [AcceptVerbs("GET")]
+        [Route("User/{id}")]
+        public User Retrieve(int id)
+        {
+            return _service.Get(id);
+        }
+
+        [AcceptVerbs("PUT")]
+        [Route("User/{id}")]
+        public void Update(int id, User user)
+        {
+            _service.Update(id, user);
+        }
     }
 }

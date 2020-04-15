@@ -28,6 +28,17 @@ namespace MVC_ConsumeAPI.Controllers
         }
 
         [HttpGet]
+        public ActionResult EditUser(int id)
+        {
+            ServiceRepository serviceObj = new ServiceRepository();
+            HttpResponseMessage response = serviceObj.GetResponse("user/" + id.ToString());
+            response.EnsureSuccessStatusCode();
+            User user = response.Content.ReadAsAsync<User>().Result;
+            ViewBag.Title = "Selected User";
+            return View(user);
+        }
+
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
@@ -36,8 +47,18 @@ namespace MVC_ConsumeAPI.Controllers
         [HttpPost]
         public ActionResult Create(User user)
         {
-            ServiceRepository serviceOjb = new ServiceRepository();
-            HttpResponseMessage response = serviceOjb.PostResponse("user", user);
+            ServiceRepository serviceObj = new ServiceRepository();
+            HttpResponseMessage response = serviceObj.PostResponse("user", user);
+            response.EnsureSuccessStatusCode();
+            return RedirectToAction("GetAllUsers");
+        }
+
+        [HttpPost]
+        public ActionResult Update(User user)
+        {
+            int id = user.UserId;
+            ServiceRepository serviceObj = new ServiceRepository();
+            HttpResponseMessage response = serviceObj.PutResponse("user/" + id.ToString(), user);
             response.EnsureSuccessStatusCode();
             return RedirectToAction("GetAllUsers");
         }

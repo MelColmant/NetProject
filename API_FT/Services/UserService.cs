@@ -30,5 +30,15 @@ namespace API_FT.Services
         {
             return _repo.Get().Select(e => e.ToAPI());
         }
+
+        public User Get(int id)
+        {
+            return _repo.Get(id).ToAPI();
+        }
+
+        public void Update(int id, User entity)
+        {
+            _repo.Update(id, entity.ToDAL());
+        }
     }
 }
