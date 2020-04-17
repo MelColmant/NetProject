@@ -23,6 +23,11 @@ namespace API_FT.Services
             _repo.Delete(id);
         }
 
+        public void DeleteParentChildId(int id)
+        {
+            _repo.DeleteParentChildId(id);
+        }
+
         public IEnumerable<ParentChild> Get()
         {
             return _repo.Get().Select(e => e.ToAPI());

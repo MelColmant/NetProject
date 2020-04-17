@@ -46,6 +46,21 @@ namespace DAL.Repositories
             }
         }
 
+        public void DeleteParentChildId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_DeleteParentChildId";
+                    command.Parameters.AddWithValue("@PersonId", id);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         public IEnumerable<ParentChild> Get()
         {
             using (SqlConnection connection = new SqlConnection(_constring))

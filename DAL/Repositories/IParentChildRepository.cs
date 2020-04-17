@@ -9,5 +9,7 @@ namespace DAL.Repositories
     public interface IParentChildRepository<TKey, T> : IRepository<TKey, T> where T: class
     {
         IEnumerable<T> GetParentChildFromTree(TKey id);
+
+        void DeleteParentChildId(TKey id);
     }
 }

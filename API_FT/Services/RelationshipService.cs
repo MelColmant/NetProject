@@ -23,6 +23,11 @@ namespace API_FT.Services
             _repo.Delete(id);
         }
 
+        public void DeleteRelationshipsId(int id)
+        {
+            _repo.DeleteRelationshipsId(id);
+        }
+
         public IEnumerable<Relationship> Get()
         {
            return _repo.Get().Select(e => e.ToAPI());

@@ -9,8 +9,7 @@ namespace DAL.Repositories
     public interface IRelationshipRepository<TKey, T> : IRepository<TKey, T> where T : class
     {
         IEnumerable<T> GetRelationships(TKey id);
-
         IEnumerable<T> GetRelationshipsFromTree(TKey id);
-
+        void DeleteRelationshipsId(TKey id);
     }
 }

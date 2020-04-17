@@ -49,6 +49,21 @@ namespace DAL.Repositories
             }
         }
 
+        public void DeleteRelationshipsId(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_DeleteRelationshipsId";
+                    command.Parameters.AddWithValue("@PersonId", id);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
         public IEnumerable<Relationship> Get()
         {
             List<Relationship> relationshipList = new List<Relationship>();

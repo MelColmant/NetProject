@@ -27,6 +27,13 @@ namespace API_FT.Controllers
             _service.Delete(id);
         }
 
+        [AcceptVerbs("DELETE")]
+        [Route("ParentChildId/{id}")]
+        public void RemoveFromId(int id)
+        {
+            _service.DeleteParentChildId(id);
+        }
+
         [AcceptVerbs("GET")]
         [Route("ParentChild")]
         public IEnumerable<ParentChild> RetrieveAll()

@@ -28,6 +28,13 @@ namespace API_FT.Controllers
             _service.Delete(id);
         }
 
+        [AcceptVerbs("DELETE")]
+        [Route("Relationships/{id}")]
+        public void RemoveFromId(int id)
+        {
+            _service.DeleteRelationshipsId(id);
+        }
+
         [AcceptVerbs("GET")]
         [Route("Relationship")]
         public IEnumerable<Relationship> RetrieveAll()
