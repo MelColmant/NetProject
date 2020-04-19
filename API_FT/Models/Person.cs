@@ -15,5 +15,7 @@ namespace API_FT.Models
         public DateTime? DeathDate { get; set; }
         public int TreeId { get; set; }
         public int Generation { get; set; }
+        public float PositionX { get; set; }
+        public float PositionY { get; set; }
     }
 }

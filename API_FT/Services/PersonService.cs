@@ -68,5 +68,10 @@ namespace API_FT.Services
         {
             _repo.Update(id, entity.ToDAL());
         }
+
+        public void UpdatePosition(int id, Person entity)
+        {
+            _repo.UpdatePosition(id, entity.ToDAL());
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace DAL.Repositories
         IEnumerable<T> GetAllFromTree(TKey id);
         IEnumerable<T> GetChildrenRel(TKey id1, TKey id2);
         TKey AddWithId(T entity);
+        void UpdatePosition(TKey id, T entity);
     }
 }

@@ -28,6 +28,8 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@DeathDate", entity.DeathDate);
                     command.Parameters.AddWithValue("@TreeId", entity.TreeId);
                     command.Parameters.AddWithValue("@Generation", entity.Generation);
+                    command.Parameters.AddWithValue("@PositionX", entity.PositionX);
+                    command.Parameters.AddWithValue("@PositionY", entity.PositionY);
                     connection.Open();
                     entity.PersonId = (int)command.ExecuteScalar();
                 }
@@ -49,6 +51,8 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@DeathDate", entity.DeathDate);
                     command.Parameters.AddWithValue("@TreeId", entity.TreeId);
                     command.Parameters.AddWithValue("@Generation", entity.Generation);
+                    command.Parameters.AddWithValue("@PositionX", entity.PositionX);
+                    command.Parameters.AddWithValue("@PositionY", entity.PositionY);
                     connection.Open();
                     entity.PersonId = (int)command.ExecuteScalar();
                     return entity.PersonId;
@@ -99,6 +103,8 @@ namespace DAL.Repositories
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
                             p.Generation = (int)reader["Generation"];
+                            p.PositionX = (float)(double)reader["PositionX"];
+                            p.PositionY = (float)(double)reader["PositionY"];
                             personList.Add(p);
 
                         }
@@ -138,6 +144,9 @@ namespace DAL.Repositories
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
                             p.Generation = (int)reader["Generation"];
+                            //apparently a SQL float is in fact a double...
+                            p.PositionX = (float)(double)reader["PositionX"];
+                            p.PositionY = (float)(double)reader["PositionY"];
                             return p;
 
                         }
@@ -178,6 +187,8 @@ namespace DAL.Repositories
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
                             p.Generation = (int)reader["Generation"];
+                            p.PositionX = (float)(double)reader["PositionX"];
+                            p.PositionY = (float)(double)reader["PositionY"];
                             personList.Add(p);
                         }
                     
@@ -215,6 +226,8 @@ namespace DAL.Repositories
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
                             p.Generation = (int)reader["Generation"];
+                            p.PositionX = (float)(double)reader["PositionX"];
+                            p.PositionY = (float)(double)reader["PositionY"];
                             personList.Add(p);
                         }
                         
@@ -253,6 +266,8 @@ namespace DAL.Repositories
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
                             p.Generation = (int)reader["Generation"];
+                            p.PositionX = (float)(double)reader["PositionX"];
+                            p.PositionY = (float)(double)reader["PositionY"];
                             personList.Add(p);
                         }
 
@@ -290,6 +305,8 @@ namespace DAL.Repositories
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
                             p.Generation = (int)reader["Generation"];
+                            p.PositionX = (float)(double)reader["PositionX"];
+                            p.PositionY = (float)(double)reader["PositionY"];
                             personList.Add(p);
                         }
                       
@@ -327,6 +344,8 @@ namespace DAL.Repositories
                             else p.DeathDate = null;
                             p.TreeId = (int)reader["TreeId"];
                             p.Generation = (int)reader["Generation"];
+                            p.PositionX = (float)(double)reader["PositionX"];
+                            p.PositionY = (float)(double)reader["PositionY"];
                             personList.Add(p);
                         }
                       
@@ -352,6 +371,25 @@ namespace DAL.Repositories
                     command.Parameters.AddWithValue("@DeathDate", entity.DeathDate);
                     command.Parameters.AddWithValue("@TreeId", entity.TreeId);
                     command.Parameters.AddWithValue("@Generation", entity.Generation);
+                    command.Parameters.AddWithValue("@PositionX", entity.PositionX);
+                    command.Parameters.AddWithValue("@PositionY", entity.PositionY);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public void UpdatePosition(int id, Person entity)
+        {
+            using (SqlConnection connection = new SqlConnection(_constring))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.CommandText = "SP_PersonUpdatePos";
+                    command.Parameters.AddWithValue("@PersonId", id);
+                    command.Parameters.AddWithValue("@PositionX", entity.PositionX);
+                    command.Parameters.AddWithValue("@PositionY", entity.PositionY);
                     connection.Open();
                     command.ExecuteNonQuery();
                 }

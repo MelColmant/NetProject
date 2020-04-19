@@ -55,6 +55,13 @@ namespace API_FT.Controllers
             _service.Update(id, person);
         }
 
+        [AcceptVerbs("PUT")]
+        [Route("PersonPosition/{id}")]
+        public void UpdatePosition(int id, Person person)
+        {
+            _service.UpdatePosition(id, person);
+        }
+
         [AcceptVerbs("GET")]
         [Route("Person/AllTree/{id}")]
         public IEnumerable<Person> RetrieveAllFromTree(int id)
